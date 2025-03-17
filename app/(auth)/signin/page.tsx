@@ -25,6 +25,10 @@ export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
+=======
+  const [signUpLoading, setSignUpLoading] = useState(false);
+>>>>>>> c3f08b9 (Study CRUD Added)
 
 
   const {
@@ -38,7 +42,10 @@ export default function SignIn() {
   const onSubmit = async (values: FormData) => {
     setLoading(true);
     setError(null);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3f08b9 (Study CRUD Added)
     try {
       const signInData = await signIn("credentials", {
         email: values.email,
@@ -47,7 +54,10 @@ export default function SignIn() {
       });
 
       if (signInData?.error) {
+<<<<<<< HEAD
         console.log(error)
+=======
+>>>>>>> c3f08b9 (Study CRUD Added)
         if (signInData.error.includes("CredentialsSignin")) {
           setError("Invalid email or password. Please try again.");
         } else {
@@ -72,7 +82,16 @@ export default function SignIn() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+=======
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6 relative">
+      {signUpLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-75">
+          <Loader2 className="animate-spin text-blue-500" size={40} />
+        </div>
+      )}
+>>>>>>> c3f08b9 (Study CRUD Added)
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Sign In
@@ -182,7 +201,15 @@ export default function SignIn() {
 
         <p className="text-sm text-center text-gray-600 mt-4">
           If you don't have an account, please{" "}
+<<<<<<< HEAD
           <Link href="/signup" className="text-blue-500 hover:underline">
+=======
+          <Link href="/signup" className="text-blue-500 hover:underline" onClick={(e) => {
+            e.preventDefault();
+            setSignUpLoading(true);
+            router.push("/signup");
+          }}>
+>>>>>>> c3f08b9 (Study CRUD Added)
             Sign Up
           </Link>
         </p>

@@ -15,6 +15,10 @@ export const authOptions: NextAuthOptions = {
   
   pages: {
     signIn: "/signin",
+<<<<<<< HEAD
+=======
+    signOut: "/signin",
+>>>>>>> c3f08b9 (Study CRUD Added)
   },
   providers: [
     GoogleProvider({
@@ -51,17 +55,25 @@ export const authOptions: NextAuthOptions = {
 
         const email = String(credentials.email);
         const password = String(credentials.password);
+<<<<<<< HEAD
         console.log("Credentials:", credentials);
         const existingUser = await db.user.findUnique({
           where: { email: email },
         });
         console.log("Existing User:", existingUser);
+=======
+
+        const existingUser = await db.user.findUnique({
+          where: { email: email },
+        });
+>>>>>>> c3f08b9 (Study CRUD Added)
 
         if (!existingUser) {
           return null;
         }
 
         if (existingUser.password) {
+<<<<<<< HEAD
           // const passwordMatched = await compare(
           //   password,
           //   existingUser.password
@@ -70,12 +82,22 @@ export const authOptions: NextAuthOptions = {
           const passwordMatched = password === existingUser.password
 
           console.log("Password MATCHED _______====>", passwordMatched)
+=======
+          const passwordMatched = await compare(
+            password,
+            existingUser.password
+          );
+
+>>>>>>> c3f08b9 (Study CRUD Added)
           if (!passwordMatched) {
             return null;
           }
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3f08b9 (Study CRUD Added)
         return {
           id: `${existingUser.id}`,
           username: existingUser.username,
@@ -104,6 +126,12 @@ export const authOptions: NextAuthOptions = {
         },
       }
     },
+<<<<<<< HEAD
+=======
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl + "/signin"; // Ensures redirection always goes to /signin
+    // },
+>>>>>>> c3f08b9 (Study CRUD Added)
   },
 };
 

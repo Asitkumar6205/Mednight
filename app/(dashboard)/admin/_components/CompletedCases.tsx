@@ -27,6 +27,10 @@ export default function CompletedCases() {
 
   return (
     <div className="overflow-x-auto p-4">
+<<<<<<< HEAD
+=======
+      <h1 className="text-2xl font-semibold">Completed Cases</h1>
+>>>>>>> c3f08b9 (Study CRUD Added)
       <table className="w-full border-collapse border border-gray-300 shadow-lg">
         <thead className="bg-gray-200">
           <tr>
