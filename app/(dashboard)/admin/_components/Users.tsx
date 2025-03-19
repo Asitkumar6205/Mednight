@@ -3,8 +3,6 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 
 export default function Users() {  
-  
-
   const { data: session, status } = useSession({required: true}); // Automatically listens for session updates
   const [user, setUser] = useState<{ image: string; name: string } | null>(null);
 

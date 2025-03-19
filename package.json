@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
-    "dev": "next dev -p 3001",
-=======
     "dev": "next dev -p 3000",
->>>>>>> c3f08b9 (Study CRUD Added)
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

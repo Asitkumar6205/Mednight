@@ -21,10 +21,10 @@ export default function FileUpload() {
       <div
         {...getRootProps()}
         className={`w-full max-w-lg p-6 border-2 border-dashed rounded-lg cursor-pointer 
-        ${isDragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"} `}
+        ${isDragActive ? "border-blue-500 bg-blue-50" : "border-stone-300"} `}
       >
         <input {...getInputProps()} />
-        <p className="text-gray-600 text-center">
+        <p className="text-stone-600 text-center">
           {isDragActive ? "Drop the files here..." : "Drag & drop files here, or click to select"}
         </p>
       </div>
@@ -45,7 +45,7 @@ export default function FileUpload() {
                 )}
                 <div>
                   <p className="text-sm font-medium">{file.name}</p>
-                  <p className="text-xs text-gray-500">{(file.size / 1024).toFixed(2)} KB</p>
+                  <p className="text-xs text-stone-500">{(file.size / 1024).toFixed(2)} KB</p>
                 </div>
               </li>
             ))}

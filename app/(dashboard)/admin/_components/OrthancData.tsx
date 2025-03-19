@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 
 interface Study {
+  ID: string;
   PatientName: string;
   PatientID: string;
+  PatientSex: string;
   StudyDescription: string;
   StudyDate: string;
-  StudyInstanceUID: string;
+  StudyTime: string;
   Modality: string;
-  NumberOfStudyRelatedSeries: number;
+  Series: number;
 }
 
 export default function StudiesList() {
@@ -17,24 +19,31 @@ export default function StudiesList() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchStudies = async () => {
-      try {
-        const response = await fetch("/api/studies");
-        if (!response.ok) {
-          throw new Error(`Error ${response.status}: ${await response.text()}`);
-        }
-        const data = await response.json();
-        setStudies(data);
-        console.log(data)
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+  const fetchStudies = async () => {
+    try {
+      const response = await fetch("/api/studies");
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${await response.text()}`);
       }
-    };
+      const data: Study[] = await response.json();
 
-    fetchStudies();
+      // Only update state if new studies are found (without reloading the page)
+      if (data.length > studies.length) {
+        setStudies(data);
+      }
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStudies(); // Initial fetch
+
+    const interval = setInterval(fetchStudies, 5000); // Poll every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   if (loading) return <p>Loading studies...</p>;
@@ -48,13 +57,13 @@ export default function StudiesList() {
       ) : (
         <ul className="space-y-4">
           {studies.map((study) => (
-            <li key={study.StudyInstanceUID} className="p-4 border rounded-lg shadow-md">
+            <li key={study.ID} className="p-4 border rounded-lg shadow-md">
               <p><strong>Patient Name:</strong> {study.PatientName}</p>
               <p><strong>Patient ID:</strong> {study.PatientID}</p>
               <p><strong>Description:</strong> {study.StudyDescription}</p>
               <p><strong>Date:</strong> {study.StudyDate}</p>
               <p><strong>Modality:</strong> {study.Modality}</p>
-              <p><strong>Series Count:</strong> {study.NumberOfStudyRelatedSeries}</p>
+              <p><strong>Series Count:</strong> {study.Series}</p>
             </li>
           ))}
         </ul>

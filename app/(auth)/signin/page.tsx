@@ -25,10 +25,7 @@ export default function SignIn() {
   const [error, setError] = useState<string | null>(null);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-<<<<<<< HEAD
-=======
   const [signUpLoading, setSignUpLoading] = useState(false);
->>>>>>> c3f08b9 (Study CRUD Added)
 
 
   const {
@@ -42,10 +39,6 @@ export default function SignIn() {
   const onSubmit = async (values: FormData) => {
     setLoading(true);
     setError(null);
-<<<<<<< HEAD
-
-=======
->>>>>>> c3f08b9 (Study CRUD Added)
     try {
       const signInData = await signIn("credentials", {
         email: values.email,
@@ -54,10 +47,6 @@ export default function SignIn() {
       });
 
       if (signInData?.error) {
-<<<<<<< HEAD
-        console.log(error)
-=======
->>>>>>> c3f08b9 (Study CRUD Added)
         if (signInData.error.includes("CredentialsSignin")) {
           setError("Invalid email or password. Please try again.");
         } else {
@@ -82,31 +71,27 @@ export default function SignIn() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-=======
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6 relative">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-stone-100 p-6 relative">
       {signUpLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-75">
+        <div className="absolute inset-0 flex items-center justify-center bg-stone-200 bg-opacity-75">
           <Loader2 className="animate-spin text-blue-500" size={40} />
         </div>
       )}
->>>>>>> c3f08b9 (Study CRUD Added)
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-3xl font-bold text-center text-stone-800 mb-6">
           Sign In
         </h2>
 
         <button
-          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg text-gray-700 hover:bg-gray-100"
+          className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg text-stone-700 hover:bg-stone-100"
           onClick={SignInWithGoogle}
         >{googleLoading ? <Loader2 className="animate-spin text-stone-500" size={24} /> :  <FcGoogle size={20} /> }
         Sign In with Google
         </button>
         <div className="flex items-center my-6">
-          <div className="flex-grow h-px bg-gray-300"></div>
-          <span className="px-2 text-gray-500 text-sm">Or</span>
-          <div className="flex-grow h-px bg-gray-300"></div>
+          <div className="flex-grow h-px bg-stone-300"></div>
+          <span className="px-2 text-stone-500 text-sm">Or</span>
+          <div className="flex-grow h-px bg-stone-300"></div>
         </div>
 
         {error && (
@@ -115,7 +100,7 @@ export default function SignIn() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-gray-700">Email</label>
+            <label className="block text-stone-700">Email</label>
             <Input
               type="email"
               placeholder="Email"
@@ -129,7 +114,7 @@ export default function SignIn() {
             )}
           </div>
           <div className="relative">
-            <label className="block text-gray-700">Password</label>
+            <label className="block text-stone-700">Password</label>
             <Input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -142,11 +127,11 @@ export default function SignIn() {
             >
               {showPassword ? (
                 <EyeOff
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-stone-500 hover:text-stone-700"
                   size={20}
                 />
               ) : (
-                <Eye className="text-gray-500 hover:text-gray-700" size={20} />
+                <Eye className="text-stone-500 hover:text-stone-700" size={20} />
               )}
             </span>
             {errors.password?.message && (
@@ -199,17 +184,13 @@ export default function SignIn() {
           </Button>
         </form>
 
-        <p className="text-sm text-center text-gray-600 mt-4">
+        <p className="text-sm text-center text-stone-600 mt-4">
           If you don't have an account, please{" "}
-<<<<<<< HEAD
-          <Link href="/signup" className="text-blue-500 hover:underline">
-=======
           <Link href="/signup" className="text-blue-500 hover:underline" onClick={(e) => {
             e.preventDefault();
             setSignUpLoading(true);
             router.push("/signup");
           }}>
->>>>>>> c3f08b9 (Study CRUD Added)
             Sign Up
           </Link>
         </p>

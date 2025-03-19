@@ -5,16 +5,15 @@ import type { NextRequest } from "next/server";
 export async function middleware(req: NextRequest) {
   const token = await getToken({ req }); // Check if user is authenticated
 
-  // List of protected routes
-  const protectedRoutes = ["/admin"];
-
-  if (protectedRoutes.includes(req.nextUrl.pathname) && !token) {
+  // Protect all routes inside /admin/*
+  if (req.nextUrl.pathname.startsWith("/admin") && !token) {
     return NextResponse.redirect(new URL("/access-denied", req.url)); // Redirect if not authenticated
   }
 
   return NextResponse.next(); // Continue if authenticated
 }
 
+// Apply middleware to `/admin/*`
 export const config = {
-  matcher: ["/admin"], // Apply middleware to `/admin`
+  matcher: ["/admin/:path*"], // ✅ Protects `/admin/*`
 };

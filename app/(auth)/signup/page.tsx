@@ -84,25 +84,25 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-stone-100 p-6">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-3xl font-bold text-center text-stone-800 mb-6">
           Sign Up
         </h2>
 
-        <button className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg text-gray-700 hover:bg-gray-100">
+        <button className="w-full flex items-center justify-center gap-2 border py-2 rounded-lg text-stone-700 hover:bg-stone-100">
           <FcGoogle size={20} /> Sign Up with Google
         </button>
 
         <div className="flex items-center my-6">
-          <div className="flex-grow h-px bg-gray-300"></div>
-          <span className="px-2 text-gray-500 text-sm">Or</span>
-          <div className="flex-grow h-px bg-gray-300"></div>
+          <div className="flex-grow h-px bg-stone-300"></div>
+          <span className="px-2 text-stone-500 text-sm">Or</span>
+          <div className="flex-grow h-px bg-stone-300"></div>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-gray-700">Username</label>
+            <label className="block text-stone-700">Username</label>
             <Input
               {...register("username")}
               placeholder="Username"
@@ -113,7 +113,7 @@ export default function SignUp() {
             )}
           </div>
           <div>
-            <label className="block text-gray-700">Email</label>
+            <label className="block text-stone-700">Email</label>
             <Input
               {...register("email")}
               type="email"
@@ -128,7 +128,7 @@ export default function SignUp() {
             )}
           </div>
           <div className="relative">
-            <label className="block text-gray-700">Password</label>
+            <label className="block text-stone-700">Password</label>
             <Input
               {...register("password")}
               type={showPassword ? "text" : "password"}
@@ -142,10 +142,10 @@ export default function SignUp() {
               {showPassword ? (
                 <EyeOff
                   size={20}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-stone-500 hover:text-stone-700"
                 />
               ) : (
-                <Eye size={20} className="text-gray-500 hover:text-gray-700" />
+                <Eye size={20} className="text-stone-500 hover:text-stone-700" />
               )}
             </span>
             {errors.password && (
@@ -153,7 +153,7 @@ export default function SignUp() {
             )}
           </div>
           <div className="relative">
-            <label className="block text-gray-700">Confirm Password</label>
+            <label className="block text-stone-700">Confirm Password</label>
             <Input
               {...register("confirmPassword")}
               type={showConfirmPassword ? "text" : "password"}
@@ -167,10 +167,10 @@ export default function SignUp() {
               {showConfirmPassword ? (
                 <EyeOff
                   size={20}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-stone-500 hover:text-stone-700"
                 />
               ) : (
-                <Eye size={20} className="text-gray-500 hover:text-gray-700" />
+                <Eye size={20} className="text-stone-500 hover:text-stone-700" />
               )}
             </span>
             {errors.confirmPassword && (
@@ -215,7 +215,7 @@ export default function SignUp() {
           </Button>
         </form>
 
-        <p className="text-sm text-center text-gray-600 mt-4">
+        <p className="text-sm text-center text-stone-600 mt-4">
           If you have an account, please{" "}
           <Link href="/signin" className="text-blue-500 hover:underline">
             Sign In
